@@ -1,4 +1,12 @@
-<h1>DTM Q&A</h1>
+<div class="container">
+  <h1 class="text-center">DTM Q&A</h1>
+  <% @posts.each do |post| %>
+  <%= link_to post do%>
+    <div class="col-md-3 margin-top-5per post-block">
+      <%= image_tag 'DTM-pic.jpeg', class: 'img-responsive'%>
+      <p class="title"><%= post.title %></p>
+      <%= post.created_at.strftime("%Y年%-m月%-d日")%>
+    </div>
+  <% end %>
+  <% end %>
 <div>
-  一覧が入ります
-</div>
