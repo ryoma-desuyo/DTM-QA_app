@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destory]
+
   def index
-    @post = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc)
   end
 
   def show
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
   private
 
   def find_post
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def post_params
