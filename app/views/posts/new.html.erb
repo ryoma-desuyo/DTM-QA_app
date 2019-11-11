@@ -3,17 +3,7 @@
     <h1 class="text-center"> 質問の新規作成 </h1>
     <%= image_tag 'DTM-pic.jpeg', class: 'post-image padding-top-15'%>
     <div class="padding-bottom-15">
-      <%= form_for @post do |f|%>
-        <div class="form-group padding-top-15">
-          <%= f.label :title, 'タイトル' %>
-          <%= f.text_field :title, class: 'form-control' %>
-        </div>
-        <div class="form-group padding-top-15">
-          <%= f.label :title, '本文' %>
-          <%= f.text_field :body, class: 'form-control' %>
-        </div>
-        <%= f.submit '新規作成', class: 'btn btn-success' %>
-      <% end %>
+    <%= render  'form', post: @post  %>
     </div>
   </div>
 <div>
