@@ -4,7 +4,8 @@
       = link_to post do
         .col-md-11.margin-top-5per.post-block
           %p.title= post.title
-          = post.created_at.strftime("%Y年%-m月%-d日")
+          %p= "#{current_user.name}さんの投稿"
+          %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
   .row
     = link_to '新規作成', new_post_path, class: 'margin-top-5per btn btn-primary'
   %div
