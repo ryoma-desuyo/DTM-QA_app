@@ -11,8 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    puts "=============通過============="
     super
+    if resource
+      # resource == user
+      profile = Profile.new
+      profile.user_id = resource.id 
+      profile.name = params[:profile][:name]
+      profile.save
+    end
   end
 
   # GET /resource/edit
