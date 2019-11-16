@@ -1,0 +1,20 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#navigation", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      - if user_signed_in?
+        %a.navbar-brand{:href => "/"} xさんでログイン中
+      - else
+        %a.navbar-brand{:href => "/"} DTM Q&A_app
+      
+    #navigation.collapse.navbar-collapse
+      %p.navbar-text.navbar-right
+        - if user_signed_in?
+          = link_to 'マイページ', new_post_path
+        - else
+          = link_to '新規登録', new_post_path
+          &nbsp;
+          = link_to 'ログイン', new_post_path
