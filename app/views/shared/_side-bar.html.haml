@@ -1,29 +1,10 @@
 .side-bar
   %nav.mypage-nav
     %ul.mypage-nav-list
-      %li.mypage-nav-list__li
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          マイページ
-          =fa_icon "chevron-right", class: "icon"
-      %li.mypage-nav-list__li
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          お知らせ
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          やることリスト
-          =fa_icon "chevron-right",class: "icon"
+      %h3.mypage-nav-head 質問履歴
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          いいね！一覧
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          質問する
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          ニュース一覧
+          お気に入り一覧
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
@@ -31,47 +12,21 @@
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          ガイド
+          投稿した質問
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          お問い合わせ
-          =fa_icon "chevron-right",class: "icon"
-
-      %h3.mypage-nav-head 取引履歴
-      %li.mypage-nav-list__li 
-        =link_to  mypages_path, class: "mypage-nav-list-item" do
-          出品した教材-出品中
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          出品した教材-取引中
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          出品した教材-売却済み
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          購入した教材-取引中
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          購入した教材-過去の取引
+          回答した質問
           =fa_icon "chevron-right",class: "icon"
 
       %h3.mypage-nav-head 設定
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          プロフィール
+          プロフィール編集
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          支払い方法
-          =fa_icon "chevron-right",class: "icon"
-      %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "mypage-nav-list-item" do
-          メール/パスワード
+          メール/パスワードの変更
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
@@ -79,9 +34,17 @@
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          電話番号の確認
+          ログアウト
+          =fa_icon "chevron-right",class: "icon"
+      %li.mypage-nav-list__li
+        =link_to mypages_path,class: "mypage-nav-list-item" do
+          お知らせ
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "mypage-nav-list-item" do
-          ログアウト
+          ご利用ガイド
+          =fa_icon "chevron-right",class: "icon"
+      %li.mypage-nav-list__li 
+        =link_to mypages_path,class: "mypage-nav-list-item" do
+          お問い合わせ
           =fa_icon "chevron-right",class: "icon"
