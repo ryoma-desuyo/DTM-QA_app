@@ -1,19 +1,56 @@
-%nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      %button.navbar-toggle.collapsed{"data-target" => "#navigation", "data-toggle" => "collapse", :type => "button"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "/"} MusiQ
-
-    #navigation.collapse.navbar-collapse
-      %p.navbar-text.navbar-right
+.header-container
+  %nav.navbar.navbar-default{style: 'padding-top: 20px;'}
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle.collapsed{"data-target" => "#navigation", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a{style: 'margin-left: 30px;'}= link_to image_tag('musiq-logo2.png',class:"logo"), root_path
+      
+      .form-inline
+        = form_tag do
+          %input{type:"search",name:"keyword",value:"",placeholder:"何かお探しですか？",class: "form-control mr-sm-2"}
+          %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
         - if user_signed_in?
-          = link_to 'マイページ', mypages_path
-          &nbsp;
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+          %p.text-right{style: 'margin-left: 550px;'}= "#{current_user.name} さんでログイン中"
         - else
-          = link_to '新規登録', new_user_registration_path
-          &nbsp;
-          = link_to 'ログイン', new_user_session_path 
+          %p.text-right{style: 'margin-left: 550px;'}= "ログインはこちらから"
+
+      #navigation.collapse.navbar-collapse
+        %p.navbar-text.navbar-right
+          - if user_signed_in?
+            =link_to mypages_path, class: "mypage-header__bottom__btn__mypage" do
+              = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
+              %span#mypage-letter マイページ
+            &nbsp;
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete
+          - else
+            = link_to '新規登録', new_user_registration_path
+            &nbsp;
+            = link_to 'ログイン', new_user_session_path 
+
+      .container{style: 'padding-bottom: 10px;'}
+        %h3 人気のカテゴリー
+        %button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button", style: 'margin-bottom: 10px;'}
+          Studio One
+        %button.btn.btn-secondary{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Tooltip on right", :type => "button", style: 'margin-bottom: 10px;'}
+          オーディオインターフェイス
+        %button.btn.btn-secondary{"data-placement" => "bottom", "data-toggle" => "tooltip", :title => "Tooltip on bottom", :type => "button", style: 'margin-bottom: 10px;'}
+          VST
+        %button.btn.btn-secondary{"data-placement" => "left", "data-toggle" => "tooltip", :title => "Tooltip on left", :type => "button", style: 'margin-bottom: 10px;'}
+          Logic Pro X
+        %button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button", style: 'margin-bottom: 10px;'}
+          Sonar
+        %button.btn.btn-secondary{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Tooltip on right", :type => "button", style: 'margin-bottom: 10px;'}
+          Pro Tools
+        %button.btn.btn-secondary{"data-placement" => "bottom", "data-toggle" => "tooltip", :title => "Tooltip on bottom", :type => "button", style: 'margin-bottom: 10px;'}
+          ステップシーケンサー
+        %button.btn.btn-secondary{"data-placement" => "left", "data-toggle" => "tooltip", :title => "Tooltip on left", :type => "button", style: 'margin-bottom: 10px;'}
+          Ableton Live 10
+        %button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button", style: 'margin-bottom: 10px;'}
+          モニタースピーカー
+        %button.btn.btn-secondary{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Tooltip on right", :type => "button", style: 'margin-bottom: 10px;'}
+          Mix
+        %button.btn.btn-secondary{"data-placement" => "bottom", "data-toggle" => "tooltip", :title => "Tooltip on bottom", :type => "button", style: 'margin-bottom: 10px;'}
+          シンセサイザー
