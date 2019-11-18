@@ -4,8 +4,9 @@
     - @posts.each do |post|
       = link_to post do
         .col-md-11.margin-top-5per.post-block
-          %p.title= post.title
-          %p= "#{post.user.profile.name}さんの投稿"
+          %h1.title= post.title
+          %p.body= truncate(post.body, length: 100)
+          %p.text-right= "#{post.user.profile.name}さんの投稿"
           %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
   .row
     = paginate @posts
