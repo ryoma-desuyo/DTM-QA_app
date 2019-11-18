@@ -1,2 +1,8 @@
-%p.text-right= "#{current_user.name}さんでログイン中"
-= render  'shared/side-bar'
+%body
+  -# %p.text-right= "#{current_user.name}さんでログイン中"
+
+.mypage
+  = render  'shared/side-bar'
+  .mypage_top
+    マイページ
+  

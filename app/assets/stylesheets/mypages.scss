@@ -1,0 +1,16 @@
+.mypage {
+  display: flex;
+  
+  &_top {
+    font-size: 30px;
+    height: 50px;
+    width: 100%;
+    background-color: #09B8B4;
+    color: #fff;
+    text-align: left;
+    padding: 5px 0 0 15px;
+    margin: 20px 150px 0 100px;
+    border-radius: 25px;
+  }
+}
+
