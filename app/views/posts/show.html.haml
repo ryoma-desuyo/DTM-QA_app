@@ -6,7 +6,7 @@
       %p.text-right
         = "#{current_user.name}さんの投稿"
         = @post.created_at.strftime("%Y年%-m月%-d日")
-      - if @post.user_id = current_user.id
+      - if @post.user_id == current_user.id
         = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
         = link_to '削除', post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }  ,class: 'btn btn-danger'
   %div
