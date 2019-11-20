@@ -1,7 +1,7 @@
 .side-bar
   %nav.mypage-nav
     %ul.mypage-nav-list
-      %h3.list-group-item.active 質問履歴
+      %h3.list-head 質問履歴
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "list-group-item list-group-item-action" do
           お気に入り一覧
@@ -19,7 +19,7 @@
           回答した質問
           =fa_icon "chevron-right",class: "icon"
 
-      %h3.list-group-item.active 設定
+      %h3.list-head 設定
       %li.mypage-nav-list__li 
         =link_to mypages_path,class: "list-group-item list-group-item-action" do
           プロフィール編集

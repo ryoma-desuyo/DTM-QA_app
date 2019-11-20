@@ -1,7 +1,17 @@
 .side-bar {
   width: 300px;
 }
-
 li {
   list-style: none;
+}
+
+.list-group-item:first-child {
+  border-radius: 25px;
+}
+.list-head {
+  background-color: #09B8B4;
+  border-radius: 25px;
+  height: 42px;
+  color: #fff;
+  padding: 8px 15px;
 }
