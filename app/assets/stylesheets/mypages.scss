@@ -1,16 +1,45 @@
 .mypage {
   display: flex;
-  
-  &_top {
-    font-size: 30px;
-    height: 50px;
-    width: 100%;
-    background-color: #09B8B4;
-    color: #fff;
-    text-align: left;
-    padding: 5px 0 0 15px;
-    margin: 20px 150px 0 100px;
-    border-radius: 25px;
+  &_box {
+    display: flex;
+    margin: 20px 0 0 100px;
+    &_left {
+      background: #fff;
+      margin-right: 20px;
+      border-radius: 25px;
+      height: 200px;
+      &_top {
+        font-size: 30px;
+        height: 50px;
+        width: 350px;
+        background-color: #09B8B4;
+        color: #fff;
+        text-align: left;
+        padding: 5px 0 0 15px;
+        border-radius: 25px;
+      }
+      &_icon {
+        height: 100px;
+        width: 100px;
+        background-image: url("https://amd.c.yimg.jp/amd/20191120-00000001-jij-000-1-view.jpg");
+        float: left;
+        background-size: cover;
+        margin: 20px 0 0 10px;
+        border-radius: 50%;
+      }
+      &_name {
+        margin: 40px 0 0 140px;
+        font-size: 30px;
+      }
+    }
+    &_center {
+      padding: 5px 0 0 15px;
+      border-radius: 25px;
+      width: 500px;
+      height: 200px;
+      background-color: #fff;
+      font-size: 15px;
+    }
   }
 }
 
