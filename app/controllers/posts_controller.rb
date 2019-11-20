@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(10).order("created_at DESC")
   end
 
   def show
@@ -53,4 +55,13 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body)
   end
+
+  def ensure_correct_user
+    @post = Post.find_by(id: params[:id])
+    if @post.user_id != current_user.id
+      flash[:notice] = "エラー：自分の投稿のみ編集・削除可能です。"
+      redirect_to root_path
+    end
+  end
+
 end
