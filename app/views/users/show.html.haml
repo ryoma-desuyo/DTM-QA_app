@@ -1,0 +1,8 @@
+%h1 ユーザー詳細ページ
+%h3= @user.email
+%h2 質問内容
+- @user.posts.each do |post|
+  %a{:href => "/posts/#{post.id}"}= post.body
+  %hr/
+= link_to "ユーザー一覧へ", users_path
+= link_to "ホームへ戻る", posts_path
