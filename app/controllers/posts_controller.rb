@@ -6,10 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc)
     @posts = Post.page(params[:page]).per(10).order("created_at DESC")
+    @post = Post.new
   end
 
   def show
-  
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -59,7 +62,7 @@ class PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
     if @post.user_id != current_user.id
-      flash[:notice] = "エラー：自分の投稿のみ編集・削除可能です。"
+      flash[:notice] = "エラー：自分の質問のみ編集・削除可能です。"
       redirect_to root_path
     end
   end
