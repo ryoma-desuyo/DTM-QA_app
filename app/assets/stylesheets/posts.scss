@@ -66,11 +66,21 @@ a{
 }
 
 .comment {
+  margin: 50px;
   padding: 30px;
-  border-top: 1px solid;
+  border: 5px solid #e8e8e8;
 }
 
 .detail {
   padding: 10px;
   font-size: 18px;
+}
+
+.comment-delete {
+  display: inline;
+  margin-left: 870px;
+}
+
+.question-main {
+  padding: 30px;
 }
