@@ -8,7 +8,12 @@ class CommentsController < ApplicationController
     else
       redirect_to root_path, alert: 'コメントできませんでした'
     end
+  end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.delete
+    redirect_to comment.post, flash: { notice: 'コメントが削除されました' }
   end
 
   private
