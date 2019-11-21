@@ -3,10 +3,28 @@
   .col-md-12.margin-top-5per.post-block
     %h1= @post.title
     .padding-bottom-15{style: "padding: 10px"}
-      %p.body= simple_format @post.body
-      %p.text-right
-        = "#{current_user.name}さんの投稿"
-        = @post.created_at.strftime("%Y年%-m月%-d日")
-      - if @post.user_id == current_user.id
-        = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
-        = link_to '削除', post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }  ,class: 'btn btn-danger'
+      .detail
+        %p.body= simple_format @post.body
+        %p.text-right
+          = "#{@post.user.profile.name}さんの質問"
+          = @post.created_at.strftime("%Y年%-m月%-d日")
+        - if @post.user_id == current_user.id
+          = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
+          = link_to '削除', post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }  ,class: 'btn btn-danger'
+      .comment
+        %h2 回答一覧
+        - @comments.each do |c|
+          %div
+            =link_to mypages_path, class: "mypage-header__bottom__btn__mypage" do
+              = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
+            %a.commenter{:href => "/users/#{@post.user.id}"}= c.user.name
+            %br
+            %br
+            = simple_format  c.content
+            %hr/
+        = form_for [@post, @comment] do |f|
+          = f.text_area :content, rows: 10, class: 'form-control'
+          %br/
+          = f.submit 'コメントする', class: 'btn btn-success'
+= render 'shared/footer'
+
