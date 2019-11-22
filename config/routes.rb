@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
 
-  root 'posts#index'
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
+  resources :users, only: [:index, :show]
   resources :mypages, only: [:index, :edit, :update]
+
+  root 'posts#index'
 end

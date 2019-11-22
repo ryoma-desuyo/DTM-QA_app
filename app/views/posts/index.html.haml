@@ -76,6 +76,6 @@
             .col-md-11.margin-top-5per.post-block
               %h1.title= post.title
               %p.body= truncate(post.body, length: 100)
-              %p.text-right= "#{post.user.profile.name}さんの投稿"
+              %p.text-right= "#{post.user.profile.name}さんの質問"
               %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
 = render 'shared/footer'

@@ -6,10 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc)
     @posts = Post.page(params[:page]).per(10).order("created_at DESC")
+    @post = Post.new
   end
 
   def show
-  
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -24,25 +27,31 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to @post, notice: '作成できました'
+      flash[:notice] = "「#{@post.title}」の質問が投稿されました!"
+      redirect_to @post
     else
-      render :new, alert: '作成できませんでした'
+      flash[:notice] = "「#{@post.title}」の質問の投稿に失敗しました。"
+      render :new
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: '更新できました'
+      flash[:notice] = "「#{@post.title}」の記事を更新しました!"
+      redirect_to @post
     else
-      render :edit, alert: '更新できませんでした'
+      flash[:notice] = "「#{@post.title}」の記事の更新に失敗しました。"
+      render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      redirect_to root_path, notice: '削除に成功しました'
+      flash[:notice] = "「#{@post.title}」の記事を削除しました!"
+      redirect_to root_path
     else
-      redirect_to root_path, alert: '削除できませんでした'
+      flash[:notice] = "「#{@post.title}」の記事を削除できませんでした。"
+      redirect_to root_path
     end
   end
 
@@ -59,7 +68,7 @@ class PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
     if @post.user_id != current_user.id
-      flash[:notice] = "エラー：自分の投稿のみ編集・削除可能です。"
+      flash[:notice] = "エラー：自分の質問のみ編集・削除可能です。"
       redirect_to root_path
     end
   end
