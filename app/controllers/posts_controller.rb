@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc)
-    @posts = Post.page(params[:page]).per(10).order("created_at DESC")
+    @posts = Post.page(params[:page]).per(5).order("created_at DESC")
     @post = Post.new
   end
 
@@ -55,6 +55,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def index_list
+    @posts = Post.order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(20).order("created_at DESC")
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.order("created_at DESC")
+  end
+
   private
 
   def find_post
@@ -62,7 +68,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, tag_ids: [])
   end
 
   def ensure_correct_user
