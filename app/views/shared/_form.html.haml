@@ -13,7 +13,59 @@
   .form-group.padding-top-15
     = f.label :body, '本文'
     = f.text_area :body, rows: 10, class: 'form-control'
+    = fa_icon "cloud-upload fa-spin", class: "icon"
+    = f.label :image
+    = f.file_field :image, id: 'post_img'
+    = image_tag @post.image.to_s, id: :img_prev
+    :javascript
+      $(function() {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      $("#post_img").change(function(){
+        readURL(this);
+      });
+      });
+  .movie-group-form__field--right--mask
+    = f.label :video, for: "upload-image", class: "movie-group-form__movie" do
+      = fa_icon "cloud-upload fa-spin", class: "icon"
+      = f.label :video, class: "movie-group-form__choice"
+      = f.file_field :video, id: "upload-image"
+    = image_tag @post.video_url.to_s, id: :video_prev
+    :javascript
+      $(document).on('turbolinks:load', function() {
+        $fileField = $('#upload-image')
+
+        $($fileField).on('change', $fileField, function(e) {
+
+            file = e.target.files[0]
+            reader = new FileReader(),
+            $preview = $(".movie-group-form__choice");
+
+            reader.onload = (function(file) {
+              return function(e) {
+                $preview.empty();
+                $preview.append($('<video>').attr({
+                  src: e.target.result,
+                  width: "45%",
+                  class: "preview-image",
+                  autoplay: "autoplay",
+                  loop: "loop",
+                  playsinline: "true",
+                  title: file.name
+                }));
+              };
+            })(file);
+            reader.readAsDataURL(file);
+          });
+        });
+
   = f.submit data: {disable_with: '投稿中・・・' }, class: 'btn btn-success'
   %p.lead{style: 'display: grid;'}
     = link_to '質問一覧へ', index_list_posts_path ,class: 'btn btn-primary btn-lg'
-
