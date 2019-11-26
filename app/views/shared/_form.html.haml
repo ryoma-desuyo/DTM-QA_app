@@ -13,7 +13,7 @@
   .form-group.padding-top-15
     = f.label :body, '本文'
     = f.text_area :body, rows: 10, class: 'form-control'
-  = f.submit class: 'btn btn-success'
+  = f.submit data: {disable_with: '投稿中・・・' }, class: 'btn btn-success'
   %p.lead{style: 'display: grid;'}
     = link_to '質問一覧へ', index_list_posts_path ,class: 'btn btn-primary btn-lg'
 
