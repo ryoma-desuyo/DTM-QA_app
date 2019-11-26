@@ -61,6 +61,10 @@ class PostsController < ApplicationController
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.order("created_at DESC")
   end
 
+  def search
+    @posts = Post.search(params[:search])
+  end
+
   private
 
   def find_post
