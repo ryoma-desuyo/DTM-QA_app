@@ -13,9 +13,12 @@
           %p.body= simple_format @post.body
           %p.text-right
             = @post.created_at.strftime("%Y年%-m月%-d日")
-          - if @post.user_id == current_user.id
-            = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
-            = link_to '削除', post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }  ,class: 'btn btn-danger'
+          - @post.tags.each do |tag|
+            %span.badge.badge-light= tag.name
+          .edit-btn
+            - if @post.user_id == current_user.id
+              = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
+              = link_to '削除', post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }  ,class: 'btn btn-danger'
     .comment
       %h2 回答一覧
       - @comments.each do |c|
@@ -36,5 +39,7 @@
         = f.text_area :content, rows: 10, class: 'form-control', placeholder: '質問に回答する（最大1000文字まで））'
         %br/
         = f.submit '回答する', class: 'btn btn-success'
+    %p.lead{style: 'display: grid;'}
+      = link_to '質問一覧へ', index_list_posts_path ,class: 'btn btn-primary btn-lg'
 = render 'shared/footer'
 

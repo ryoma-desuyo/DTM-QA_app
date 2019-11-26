@@ -6,14 +6,14 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a{style: 'margin-left: 30px;'}= link_to image_tag('musiq-logo2.png',class:"logo"), root_path
+        %a{style: 'margin-left: 70px;'}= link_to image_tag('musiq-logo2.png',class:"logo"), root_path
       
       .form-inline
         = form_tag do
           %input{type:"search",name:"keyword",value:"",placeholder:"何かお探しですか？",class: "form-control mr-sm-2"}
           %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
         - if user_signed_in?
-          %p.text-right{style: 'margin-left: 550px;'}= "#{current_user.name} さんでログイン中..."
+          %p.text-right{style: 'margin-left: 460px;'}= "#{current_user.name} さんでログイン中..."
         - else
           %p.text-right{style: 'margin-left: 550px;'}= "ログインはこちらから"
 
@@ -45,6 +45,22 @@
           Pro Tools
         %button.btn.btn-secondary{"data-placement" => "bottom", "data-toggle" => "tooltip", :title => "Tooltip on bottom", :type => "button", style: 'margin-bottom: 10px;'}
           ステップシーケンサー
+        %button.btn.btn-secondary{"data-placement" => "left", "data-toggle" => "tooltip", :title => "Tooltip on left", :type => "button", style: 'margin-bottom: 10px;'}
+          Ableton Live 10
+        %button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button", style: 'margin-bottom: 10px;'}
+          モニタースピーカー
+        %button.btn.btn-secondary{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Tooltip on right", :type => "button", style: 'margin-bottom: 10px;'}
+          Mix
+        %button.btn.btn-secondary{"data-placement" => "bottom", "data-toggle" => "tooltip", :title => "Tooltip on bottom", :type => "button", style: 'margin-bottom: 10px;'}
+          シンセサイザー
+        %button.btn.btn-secondary{"data-placement" => "left", "data-toggle" => "tooltip", :title => "Tooltip on left", :type => "button", style: 'margin-bottom: 10px;'}
+          Ableton Live 10
+        %button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button", style: 'margin-bottom: 10px;'}
+          モニタースピーカー
+        %button.btn.btn-secondary{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Tooltip on right", :type => "button", style: 'margin-bottom: 10px;'}
+          Mix
+        %button.btn.btn-secondary{"data-placement" => "bottom", "data-toggle" => "tooltip", :title => "Tooltip on bottom", :type => "button", style: 'margin-bottom: 10px;'}
+          シンセサイザー
         %button.btn.btn-secondary{"data-placement" => "left", "data-toggle" => "tooltip", :title => "Tooltip on left", :type => "button", style: 'margin-bottom: 10px;'}
           Ableton Live 10
         %button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button", style: 'margin-bottom: 10px;'}

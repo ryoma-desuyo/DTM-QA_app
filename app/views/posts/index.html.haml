@@ -7,14 +7,14 @@
       .list-group
         %li.list-group-item.index DAW
         %a.list-group-item.list-group-item-action{:href => "#!"} Garage Band
-        %a.list-group-item.list-group-item-action{:href => "#!"} Studio One
-        %a.list-group-item.list-group-item-action{:href => "#!"} Logic Pro
-        %a.list-group-item.list-group-item-action{:href => "#!"} Ableton Live
-        %a.list-group-item.list-group-item-action{:href => "#!"} Cubase
-        %a.list-group-item.list-group-item-action{:href => "#!"} FL Studio
-        %a.list-group-item.list-group-item-action{:href => "#!"} Pro Tools
-        %a.list-group-item.list-group-item-action{:href => "#!"} Sonar
-        %a.list-group-item.list-group-item-action{:href => "#!"} その他
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=1"} Studio One
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=2"} Logic Pro
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=3"} Ableton Live
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=3"} Cubase
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=5"} FL Studio
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=4"} Pro Tools
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=5"} Sonar
+        %a.list-group-item.list-group-item-action{:href => "/posts/index_list?utf8=✓&tag_id=1"} その他
       .list-group
         %li.list-group-item.index VSTプラグイン
         %a.list-group-item.list-group-item-action{:href => "#!"} EQ
@@ -65,8 +65,10 @@
       %p
         質問が決まれば、早速下のボタンから質問をしてみよう
         カテゴリやジャンルを詳しく設定すると、的確な答えが返ってくるよ！
-      %p.lead
+      %p.lead{style: 'display: grid;'}
         %a.btn.btn-primary.btn-lg{:href => "posts/new", :role => "button"} 質問する
+      %p.lead{style: 'display: grid;'}
+        %a.btn.btn-primary.btn-lg{:href => "posts/index_list", :role => "button"} 質問一覧へ
 
     .container-right
       %h2.text-center{style: 'color: #fff;'} 最新の質問
@@ -75,7 +77,12 @@
           = link_to post do
             .col-md-11.margin-top-5per.post-block
               %h1.title= post.title
+              - post.tags.each do |tag|
+                %span.badge.badge-light= tag.name
               %p.body= truncate(post.body, length: 100)
               %p.text-right= "#{post.user.profile.name}さんの質問"
               %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
+      %p.lead
+        %a.btn.btn-primary.btn-lg{href: "posts/index_list", role: "button", style:'display: grid;'} もっと見る
+
 = render 'shared/footer'

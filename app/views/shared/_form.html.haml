@@ -1,8 +1,19 @@
 = form_for post do |f|
+  .form-group
+    %span カテゴリー
+    .tag-block
+      = f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag|
+        .form-check
+          = tag.label class: 'form-check-label' do
+            = tag.check_box class: 'form-check-input'
+            = tag.text
   .form-group.padding-top-15
     = f.label :title, 'タイトル'
     = f.text_field :title, class: 'form-control'
   .form-group.padding-top-15
-    = f.label :title, '本文'
+    = f.label :body, '本文'
     = f.text_area :body, rows: 10, class: 'form-control'
   = f.submit class: 'btn btn-success'
+  %p.lead{style: 'display: grid;'}
+    = link_to '質問一覧へ', index_list_posts_path ,class: 'btn btn-primary btn-lg'
+
