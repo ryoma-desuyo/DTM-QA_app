@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  get '*path', to: 'application#render_404'
+
 end
