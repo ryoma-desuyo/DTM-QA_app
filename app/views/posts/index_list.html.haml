@@ -1,15 +1,4 @@
 = render 'shared/header'
--# .container-list
--#   %h2.text-center{style: 'color: #fff;'} 質問一覧（最新順）
--#   .ml-auto.posts_button
--#     = form_tag index_list_posts_path, method: :get, class: 'posts__searchForm' do
--#       = select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), { prompt: 'タグで絞り込み', class: 'form-control posts__select', onchange: 'submit(this.form);'}
--#   .row
--#     - @posts.each do |post|
--#       = link_to post do
--#         .col-md-11.margin-top-5per.post-block
--#           %h1.title= post.title
--#           %p.body= truncate(post.body, length: 100)
 .container-list
   .d-flex.align-items-center
     %h1 質問一覧
