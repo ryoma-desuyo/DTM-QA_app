@@ -13,6 +13,15 @@
           %p.body= simple_format @post.body
           - @post.tags.each do |tag|
             %span.badge.badge-light= tag.name
+          %h3
+            お気に入り件数: #{@post.favorites.count}
+          - if current_user.already_favorited?(@post)
+            = button_to 'お気に入りを解除する', post_favorite_path(@post), method: :delete, class: 'btn btn-danger'
+          - else
+            = button_to 'お気に入り登録', post_favorites_path(@post), class: 'btn btn-success'
+          %h2 お気に入りしたユーザー
+          - @post.favorited_users.each do |user|
+            %li= user.name
           - if @post.image.present?
             %td= image_tag @post.image.to_s,loop: true, controls: true, width: 550, id: "im"
           - if @post.video.present?
