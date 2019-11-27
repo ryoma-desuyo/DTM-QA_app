@@ -11,6 +11,7 @@
         %th{:scope => "col", :style => "width: 40px"} カテゴリー
         %th{:scope => "col", :style => "width: 200px"} タイトル
         %th{:scope => "col", :style => "width: 500px"} 質問内容
+        %th{:scope => "col"} お気に入り数
         %th{:scope => "col"} 質問者
         %th{:scope => "col"} 更新日時
         %th
@@ -22,6 +23,7 @@
               %span.badge.badge-light= tag.name
           %td= post.title
           %td= truncate(post.body, length: 90)
+          %td= post.favorited_users.count
           %td= post.user.profile.name
           %td= post.updated_at.strftime('%Y/%m/%d')
           %td= link_to '詳細', post, id: "detail-" + post.id.to_s, class: 'btn btn-outline-info'
