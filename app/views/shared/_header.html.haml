@@ -9,9 +9,9 @@
         %a{style: 'margin-left: 70px;'}= link_to image_tag('musiq-logo2.png',class:"logo"), root_path
       
       .form-inline
-        = form_tag do
-          %input{type:"search",name:"keyword",value:"",placeholder:"何かお探しですか？",class: "form-control mr-sm-2"}
-          %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+        = form_tag(searches_path,method: :get) do
+          = text_field_tag :search, "",placeholder:"何かお探しですか？"
+          = submit_tag 'search', :name => nil
         - if user_signed_in?
           %p.text-right{style: 'margin-left: 460px;'}= "#{current_user.name} さんでログイン中..."
         - else
