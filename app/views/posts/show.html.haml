@@ -21,7 +21,7 @@
             = button_to 'お気に入り登録', post_favorites_path(@post), class: 'btn btn-success'
           %h2 お気に入りしたユーザー
           - @post.favorited_users.each do |user|
-            %li= user.name
+            %a.commenter{:href => "/users/#{user.id}"}= "#{user.name} さん"
           - if @post.image.present?
             %td= image_tag @post.image.to_s,loop: true, controls: true, width: 550, id: "im"
           - if @post.video.present?
