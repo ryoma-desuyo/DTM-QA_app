@@ -11,14 +11,19 @@
       .padding-bottom-15{style: "padding: 10px"}
         .detail
           %p.body= simple_format @post.body
-          %p.text-right
-            = @post.created_at.strftime("%Y年%-m月%-d日")
           - @post.tags.each do |tag|
             %span.badge.badge-light= tag.name
+          - if @post.image.present?
+            %td= image_tag @post.image.to_s,loop: true, controls: true, width: 550, id: "im"
+          - if @post.video.present?
+            %td= video_tag @post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"
+          %p.text-right
+            = @post.created_at.strftime("%Y年%-m月%-d日")
           .edit-btn
             - if @post.user_id == current_user.id
               = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
               = link_to '削除', post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }  ,class: 'btn btn-danger'
+
     .comment
       %h2 回答一覧
       - @comments.each do |c|

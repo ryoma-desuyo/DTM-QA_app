@@ -73,3 +73,4 @@ gem 'erb2haml'
 gem "font-awesome-rails"
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'rake', '< 11.0'
+gem 'carrierwave'
