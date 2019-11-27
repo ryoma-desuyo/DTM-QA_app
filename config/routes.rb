@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show]
   resources :mypages, only: [:index, :edit, :update]
+  resources :searches, only:[:index]
 
   root 'posts#index'
 
