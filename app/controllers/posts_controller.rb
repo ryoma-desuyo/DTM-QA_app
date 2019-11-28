@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
+    @new_comments = Comment.new
   end
 
   def new
