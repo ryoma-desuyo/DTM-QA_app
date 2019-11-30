@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = Comment.new
     @favorite = Favorite.new
+    @new_comments = Comment.new
   end
 
   def new
