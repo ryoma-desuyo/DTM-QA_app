@@ -82,6 +82,7 @@
               %p.body= truncate(post.body, length: 100)
               %p.text-right= "#{post.user.profile.name}さんの質問"
               %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
+              お気に入り(#{post.favorited_users.count})
       %p.lead
         %a.btn.btn-primary.btn-lg{href: "posts/index_list", role: "button", style:'display: grid;'} もっと見る
 
