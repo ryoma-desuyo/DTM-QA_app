@@ -6,7 +6,7 @@
     .question-main
       %h1= @post.title
       =link_to mypages_path, class: "icon-btn" do
-        = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
+        -# = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
       %a.commenter{:href => "/users/#{@post.user.id}"}= "#{@post.user.profile.name} さん"
       .padding-bottom-15{style: "padding: 10px"}
         .detail
@@ -46,7 +46,7 @@
         %li.collection-item
           %div
             =link_to mypages_path, class: "icon-btn" do
-              = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
+              -# = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
             %a.commenter{:href => "/users/#{@post.user.id}"}= "#{comment.user.name} さん"
             &nbsp;
             &nbsp;
