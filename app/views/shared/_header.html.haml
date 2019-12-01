@@ -21,7 +21,7 @@
         %p.navbar-text.navbar-right
           - if user_signed_in?
             =link_to mypages_path, class: "mypage-header__bottom__btn__mypage" do
-              = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
+              -# = image_tag 'DTM-pic.jpeg', size: '32x32', id: 'user-icon'
               %span#mypage-letter{style: 'color: #fff;'}  マイページ
             &nbsp;
             = link_to 'ログアウト', destroy_user_session_path, method: :delete
