@@ -5,8 +5,8 @@
   .col-md-12.margin-top-5per.post-block
     .question-main
       %h1= @post.title
-      =link_to mypages_path, class: "icon-btn" do
-      %a.commenter{:href => "/users/#{@post.user.id}"}= "#{@post.user.profile.name} さん"
+      =link_to mypages_path, class: "icon-btn"
+      %a.commenter{href: "/users/#{@post.user.id}"}= "#{@post.user.profile.name} さん"
       .padding-bottom-15{style: "padding: 10px"}
         .detail
           %p.body= simple_format @post.body
@@ -22,9 +22,9 @@
           - @post.favorited_users.each do |user|
             %a.commenter{:href => "/users/#{user.id}"}= "#{user.name} さん"
           - if @post.image.present?
-            %td= image_tag @post.image.to_s,loop: true, controls: true, width: 550, id: "im"
+            %td= image_tag @post.image.to_s, loop: true, controls: true, width: 550, id: "im"
           - if @post.video.present?
-            %td= video_tag @post.video_url.to_s,loop: true, controls: true, width: 550, id: "mv"
+            %td= video_tag @post.video_url.to_s, loop: true, controls: true, width: 550, id: "mv"
           %p.text-right
             = @post.created_at.strftime("%Y年%-m月%-d日")
           .edit-btn
@@ -44,7 +44,7 @@
       - @comments.each do |comment|
         %li.collection-item
           %div
-            =link_to mypages_path, class: "icon-btn" do
+            =link_to mypages_path, class: "icon-btn"
             %a.commenter{:href => "/users/#{@post.user.id}"}= "#{comment.user.name} さん"
             &nbsp;
             &nbsp;
