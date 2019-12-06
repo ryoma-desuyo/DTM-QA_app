@@ -21,7 +21,7 @@
 
       %h3.list-head 設定
       %li.mypage-nav-list__li 
-        =link_to mypages_path,class: "list-group-item list-group-item-action" do
+        =link_to profile_mypage_path(current_user),class: "list-group-item list-group-item-action" do
           プロフィール編集
           =fa_icon "chevron-right",class: "icon"
       %li.mypage-nav-list__li 
