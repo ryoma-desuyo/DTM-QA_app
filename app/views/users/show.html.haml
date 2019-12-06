@@ -4,10 +4,9 @@
 - @user.posts.each do |post|
   %a{:href => "/posts/#{post.id}"}= post.title
   %hr/
-%h3 お気に入りしている投稿
-- @user.favorited_posts.each do |post|
-  = post.user.profile.name
-  %a{:href => "/posts/#{post.id}"}= post.title
+
+= render 'shared/favorite'
+
 
 = link_to "ユーザー一覧へ", users_path
 = link_to "ホームへ戻る", posts_path
