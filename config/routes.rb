@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show]
-  resources :mypages, only: [:index, :edit, :update]
+  resources :mypages, only: [:index, :edit, :update] do
+    member do
+      get 'favorite'
+    end
+  end
   resources :searches, only:[:index]
 
   root 'posts#index'
