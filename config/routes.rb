@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :mypages, only: [:index, :edit, :update] do
     member do
       get 'favorite'
+      get 'profile'
     end
   end
   resources :searches, only:[:index]
