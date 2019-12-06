@@ -1,10 +1,6 @@
 %h1 ユーザー詳細ページ
 %h3= @user.email
-%h2 質問内容
-- @user.posts.each do |post|
-  %a{:href => "/posts/#{post.id}"}= post.title
-  %hr/
-
+= render 'shared/question'
 = render 'shared/favorite'
 
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       get 'favorite'
       get 'profile'
+      get 'question'
     end
   end
   resources :searches, only:[:index]

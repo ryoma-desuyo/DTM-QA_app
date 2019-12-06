@@ -10,4 +10,8 @@ class MypagesController < ApplicationController
   def profile
     
   end
+
+  def question
+    @user = User.find(params[:id])
+  end
 end
