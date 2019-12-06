@@ -1,0 +1,20 @@
+= render 'shared/header'
+
+.containar
+  .profile
+    .profile_head
+      %h2.title プロフィール
+    .profile_icon
+      = image_tag('', class: "mypage-background")
+      = image_tag('', class: "user-icon")
+      = form_tag do
+        %input{type:"text",name:"nickname",value:current_user.name,placeholder:"例)テスト",class: "input-defalt", style:"margin-top: 70px;"}
+    .profile_context
+      = form_tag do
+        %textarea{type:"text",name:"introduction",value:"",placeholder:"例）こんにちは。",class: "textarea-defalt"}
+    .profile_update
+      %button.btn-default.btn-red{type:"submit"} 変更する
+
+= render partial: 'shared/side-bar'
+
+= render partial: 'shared/footer'
