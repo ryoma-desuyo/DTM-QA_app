@@ -1,0 +1,4 @@
+%h2 質問内容
+- @user.posts.each do |post|
+  %a{:href => "/posts/#{post.id}"}= post.title
+  %hr/
