@@ -1,4 +1,11 @@
-%h2 質問内容
-- @user.posts.each do |post|
-  %a{:href => "/posts/#{post.id}"}= post.title
-  %hr/
+.container
+  %h2 質問一覧
+  - @user.posts.each do |post|
+    %a{:href => "/posts/#{post.id}"}= post.title
+    %h1.title= post.title
+    - post.tags.each do |tag|
+      %span.badge.badge-light= tag.name
+    %p.body= truncate(post.body, length: 100)
+    %p.text-right= "#{post.user.profile.name}さんの質問"
+    %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
+    %hr/

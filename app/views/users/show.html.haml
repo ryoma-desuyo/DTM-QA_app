@@ -1,8 +1,9 @@
-%h1 ユーザー詳細ページ
-%h3= @user.email
-= render 'shared/question'
-= render 'shared/favorite'
+= render 'shared/header'
+.container
+  %h1= @user.profile.name
+  = render 'shared/question'
+  = render 'shared/favorite'
 
 
-= link_to "ユーザー一覧へ", users_path
-= link_to "ホームへ戻る", posts_path
+  = link_to "ユーザー一覧へ", users_path
+  = link_to "ホームへ戻る", posts_path
