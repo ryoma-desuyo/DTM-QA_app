@@ -70,18 +70,22 @@
         %a.btn.btn-primary.btn-lg{:href => "posts/index_list", :role => "button"} 質問一覧へ
 
     .container-right
-      %h2.text-center{style: 'color: #fff;'} 最新の質問
+      %h2.text-center{style: 'color: #fff;'} 人気の質問
       .row
-        - @posts.each do |post|
-          = link_to post do
+        - @ranking_posts.each_with_index do |rank_data,index|
+          =link_to post_path(rank_data) do
             .col-md-11.margin-top-5per.post-block
-              %h1.title= post.title
-              - post.tags.each do |tag|
+              %h1.title= rank_data.title
+              - rank_data.tags.each do |tag|
                 %span.badge.badge-light= tag.name
-              %p.body= truncate(post.body, length: 100)
-              %p.text-right= "#{post.user.profile.name}さんの質問"
-              %p.text-right= post.created_at.strftime("%Y年%-m月%-d日")
-              お気に入り(#{post.favorited_users.count})
+              %p.body= truncate(rank_data.body, length: 100)
+              %p.text-right= "#{rank_data.user.profile.name}さんの質問"
+              %p.text-right= rank_data.created_at.strftime("%Y年%-m月%-d日")
+              お気に入り(#{rank_data.favorited_users.count})
+              (
+              = REDIS.zscore("posts/daily/#{Date.today.to_s}", rank_data.id).to_i
+              PV
+              )
       %p.lead
         %a.btn.btn-primary.btn-lg{href: "posts/index_list", role: "button", style:'display: grid;'} もっと見る
 
