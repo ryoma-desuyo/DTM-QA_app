@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :set_ranking_data
 
   def index
     @posts = Post.order(created_at: :desc)
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @favorite = Favorite.new
     @new_comments = Comment.new
+    REDIS.zincrby "posts/daily/#{Date.today.to_s}", 1, @post.id
   end
 
   def new
@@ -48,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    REDIS.zrem "posts/daily/#{Date.today.to_s}", @post.id
     if @post.destroy
       flash[:notice] = "「#{@post.title}」の記事を削除しました!"
       redirect_to root_path
@@ -78,6 +81,15 @@ class PostsController < ApplicationController
     if @post.user_id != current_user.id
       flash[:notice] = "エラー：自分の質問のみ編集・削除可能です。"
       redirect_to root_path
+    end
+  end
+
+  def set_ranking_data
+    ids = REDIS.zrevrangebyscore "posts/daily/#{Date.today.to_s}", "+inf", 0, limit: [0, 5]
+    @ranking_posts = ids.map{ |id| Post.find(id) }
+    if @ranking_posts.count < 5
+      adding_posts = Post.order(created_at: :DESC, updated_at: :DESC).where.not(id: ids).limit(5 - @ranking_posts.count)
+      @ranking_posts.concat(adding_posts)
     end
   end
 
