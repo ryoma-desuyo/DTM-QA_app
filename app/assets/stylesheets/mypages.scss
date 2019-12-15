@@ -1,10 +1,12 @@
+@import 'variables';
+
 .mypage {
   display: flex;
   &_box {
     display: flex;
     margin: 20px 0 0 100px;
     &_left {
-      background: #fff;
+      background: white;
       margin-right: 20px;
       border-radius: 25px;
       height: 200px;
@@ -12,8 +14,8 @@
         font-size: 30px;
         height: 50px;
         width: 350px;
-        background-color: #09B8B4;
-        color: #fff;
+        background-color: $base-green;
+        color: white;
         text-align: left;
         padding: 5px 0 0 15px;
         border-radius: 25px;
@@ -37,7 +39,7 @@
       border-radius: 25px;
       width: 500px;
       height: 200px;
-      background-color: #fff;
+      background-color: white;
       font-size: 15px;
     }
   }

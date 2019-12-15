@@ -1,3 +1,5 @@
+@import 'variables';
+
 .posts_table {
   tr:hover {
       cursor: pointer;
@@ -10,21 +12,21 @@
 
 .title{
   font-size: 30px;
-  background-color: #0FB4AF;
-  color: #fff;
+  background-color: $base-green;
+  color: $base-white;;
   border-radius: 5px;
   padding: 2px;
 }
 
 .post-block{
-  background-color: #fff;
+  background-color: white;
   border-radius: 25px;
   margin-left: 30px;
   padding: 20px;
 }
 
 a{
-  color: #666;
+  color: $link;
 }
 
 .padding-top-15{
@@ -39,9 +41,26 @@ a{
 .jumbotron {
   width: 55%;
   margin-left: 512px;
-  background-color: #0FB4AF;
+  background-color: $base-green;
   margin-left: 512px;
-  color: #fff;
+  color: $base-white;
+  .anm_mod {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+    transition: all 1s ease;
+    &.left {
+      transform: translate3d(-100%, 0, 0);
+    }
+    &.right {
+    transform: translate3d(100%, 0, 0);
+    }
+    &.delay {
+    transition: all 2s ease;
+    }
+    &.fast {
+    transition: all 0.8 ease;
+    }
+  }
 }
 
 .index-side {
@@ -51,17 +70,17 @@ a{
 }
 
 .list-group-item.index {
-  background-color: #0FB4AF;
-  color: #fff;
+  background-color: $base-green;
+  color: $base-white;
 }
 
 .btn.btn-primary.btn-lg {
-  color:  #0FB4AF;
-  background-color: #fff;
+  color:  $base-green;
+  background-color: $base-white;
 }
 
 .container-right {
-  background-color: #0FB4AF;
+  background-color: $base-green;
   width: 300px;
   margin-left: 512px;
   width: 55%;
@@ -99,7 +118,7 @@ a{
 
 
 .container-list {
-  background-color: #0FB4AF;
+  background-color: $base-green;
   width: 80%;
   padding: 50px;
   border-radius: 10px;
@@ -112,11 +131,11 @@ a{
 }
 
 .container-list {
-  background-color: #fff;
+  background-color: $base-white;
 }
 
 .list-head {
-  background-color: #0FB4AF;
+  background-color: $base-green;
 }
 
 .posts__searchForm {
@@ -160,3 +179,5 @@ a{
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+
