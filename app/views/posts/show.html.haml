@@ -27,6 +27,10 @@
             %td= video_tag @post.video_url.to_s, loop: true, controls: true, width: 550, id: "mv"
           %p.text-right
             = @post.created_at.strftime("%Y年%-m月%-d日")
+            (
+            = REDIS.zscore("posts/daily/#{Date.today.to_s}", @post.id).to_i
+            PV
+            )
           .edit-btn
             - if @post.user_id == current_user.id
               = link_to '編集', edit_post_path(@post), class: 'btn btn-primary'
